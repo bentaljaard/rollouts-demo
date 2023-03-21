@@ -29,6 +29,9 @@ spec:
       labels:
         app: rollouts-demo
         istio-injection: enabled
+        # version: "1.0"
+      annotations:
+        sidecar.istio.io/inject: "true"
     spec:
       containers:
       - name: rollouts-demo

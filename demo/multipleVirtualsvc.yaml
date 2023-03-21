@@ -6,14 +6,14 @@ spec:
   gateways:
   - rollouts-demo-gateway
   hosts:
-  - istio-ingressgateway-istio-system.apps.sno-local.phybernet.org
+  - rollout-app.apps.sno-local.phybernet.org
   http:
   - name: primary
-    match:
-    - uri:
-      prefix: /rollout-app
-    rewrite:
-      uri: /
+    # match:
+    #   - uri:
+    #       prefix: /rollout-app
+    # rewrite:
+    #   uri: /
     route:
     - destination:
         host: rollouts-demo-stable
@@ -48,14 +48,14 @@ spec:
   gateways:
   - rollouts-demo-gateway
   hosts:
-  - istio-ingressgateway-istio-system.apps.sno-local.phybernet.org
+  - rollout-app.apps.sno-local.phybernet.org
   http:
   - name: secondary
-    match:
-      - uri:
-          prefix: /rollout-app
-    rewrite:
-      uri: /
+    # match:
+    #   - uri:
+    #       prefix: /rollout-app
+    # rewrite:
+    #   uri: /
     route:
     - destination:
         host: rollouts-demo-stable
