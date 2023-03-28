@@ -5,5 +5,5 @@
   path: /spec/members/0
   value: argo-rollouts-demo-staging
 - op: replace
-  path: /metadata/labels/app.kubernetes.io/instance
+  path: /metadata/labels/'app.kubernetes.io/instance'
   value: argo-rollouts-demo-staging
