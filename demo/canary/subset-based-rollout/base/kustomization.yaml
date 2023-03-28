@@ -4,3 +4,5 @@ resources:
 - gateway.yaml
 - virtual-service.yaml
 - rollout.yaml
+- servicemesh-controlplane.yaml
+- servicemesh-member-roll.yaml

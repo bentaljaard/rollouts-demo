@@ -2,8 +2,7 @@ apiVersion: maistra.io/v1
 kind: ServiceMeshMemberRoll
 metadata:
   name: default
-  namespace: istio-system
+  namespace: argo-rollouts-demo
 spec:
   members:
-    - sm-rollouts-demo
-    - argo-rollouts-demo-staging
+    - argo-rollouts-demo

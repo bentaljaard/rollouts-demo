@@ -25,3 +25,15 @@ patchesJson6902:
     kind: VirtualService
     name: rollout-vsvc
   path: patch-virtualservice.yaml
+- target:
+    version: v2
+    group: maistra.io
+    kind: ServiceMeshControlPlane
+    name: argo-rollouts-demo
+  path: patch-mesh-controlplane.yaml
+- target:
+    version: v2
+    group: maistra.io
+    kind: ServiceMeshMemberRoll
+    name: default
+  path: patch-mesh-member.yaml

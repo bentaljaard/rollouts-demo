@@ -1,0 +1,6 @@
+- op: replace
+  path: /metadata/namespace
+  value: argo-rollouts-demo-staging
+- op: replace
+  path: /spec/members/0
+  value: argo-rollouts-demo-staging
