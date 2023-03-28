@@ -22,5 +22,5 @@ spec:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
     automated:
-      prune: true
+      # prune: true
       selfHeal: true
