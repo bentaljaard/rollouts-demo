@@ -2,6 +2,7 @@ apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
   name: argo-rollouts-demo
+  namespace: argo-rollouts-demo
 spec:
   tracing:
     type: Jaeger
