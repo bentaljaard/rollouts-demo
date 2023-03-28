@@ -4,7 +4,7 @@ kind: Kustomization
 bases:
 - ../../base
 
-namespace: rollouts-app-staging
+namespace: argo-rollouts-demo-staging
 
 patchesJson6902:
 - target:
