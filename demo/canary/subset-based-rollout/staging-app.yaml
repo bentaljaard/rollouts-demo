@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-rollouts-demo
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: argo-rollouts-demo-staging
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: demo/canary/subset-based-rollout/overlays/staging
+    repoURL: https://github.com/bentaljaard/rollouts-demo.git
+    targetRevision: main
+  ignoreDifferences:
+  - group: networking.istio.io
+    kind: VirtualService
+    jsonPointers:
+    - /spec/http/0
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    # automated:
+    #   prune: true
+    #   selfHeal: true
