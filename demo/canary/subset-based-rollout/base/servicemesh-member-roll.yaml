@@ -3,8 +3,6 @@ kind: ServiceMeshMemberRoll
 metadata:
   name: default
   namespace: argo-rollouts-demo
-  labels:
-    app.kubernetes.io/instance: argo-rollouts-demo
 spec:
   members:
     - argo-rollouts-demo
