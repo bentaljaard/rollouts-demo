@@ -32,7 +32,7 @@ patchesJson6902:
     name: argo-rollouts-demo
   path: patch-mesh-controlplane.yaml
 - target:
-    version: v2
+    version: v1
     group: maistra.io
     kind: ServiceMeshMemberRoll
     name: default
