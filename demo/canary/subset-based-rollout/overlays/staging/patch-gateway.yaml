@@ -3,4 +3,4 @@
   value: "rollout-app-staging.apps.cluster-g9w5w.g9w5w.sandbox1118.opentlc.com"
 - op: replace
   path: /metadata/namespace
-  value: argo-rollouts-demo-staging
+  value: staging-mesh
