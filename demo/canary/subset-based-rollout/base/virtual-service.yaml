@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: rollout-vsvc
+spec:
+  gateways:
+  - rollouts-demo-gateway
+  hosts:
+  # - rollout-app.apps.sno-local.phybernet.org
+  - rollout-app.apps.cluster-g9w5w.g9w5w.sandbox1118.opentlc.com
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: rollouts-demo
+        subset: stable
+      weight: 100
+    - destination:
+        host: rollouts-demo
+        subset: canary
+      weight: 0

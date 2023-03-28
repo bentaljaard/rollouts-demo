@@ -1,0 +1,3 @@
+- op: replace
+  path: /spec/hosts[0]
+  value: rollout-app.apps.cluster-g9w5w.g9w5w.sandbox1118.opentlc.com

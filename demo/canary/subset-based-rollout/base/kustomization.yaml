@@ -1,0 +1,6 @@
+resources:
+- service.yaml
+- destination-rule.yaml
+- gateway.yaml
+- virtual-service.yaml
+- rollout.yaml

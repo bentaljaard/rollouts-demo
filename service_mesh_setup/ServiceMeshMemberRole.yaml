@@ -5,4 +5,4 @@ metadata:
   namespace: istio-system
 spec:
   members:
-    - istio-rollout-test
+    - sm-rollouts-demo

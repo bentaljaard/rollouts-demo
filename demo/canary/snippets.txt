@@ -1,0 +1,50 @@
+setup
+-------
+Install following operators:
+* elastic
+* distributed tracing platform
+* kiali
+* service mesh
+
+
+oc login....
+oc create namespace argo-rollouts
+oc apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
+
+oc apply -f service_mesh_setup/ServiceMeshControlPlane.yaml
+
+
+demo application
+-----------------
+oc new-project sm-rollouts-demo
+oc apply -f service_mesh_setup/ServiceMeshMemberRole.yaml
+
+oc apply -f service.yaml
+oc apply -f destination-rule.yaml
+
+# Update hosts
+oc apply -f gateway.yaml
+oc apply -f virtual-service.yaml
+
+oc apply -f rollout.yaml
+
+-----
+
+oc argo rollouts get rollout rollouts-demo --watch
+
+oc argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:red
+
+browser: rollout-app.apps.cluster-g9w5w.g9w5w.sandbox1118.opentlc.com
+
+
+oc get pods -o "custom-columns=POD-NAME:.metadata.name,IMAGE:.spec.containers[0].image,VERSION:.metadata.labels.version"
+
+oc argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:red
+
+oc argo rollouts promote rollouts-demo
+
+
+oc get virtualservice -o "custom-columns=NAME:.metadata.name,STABLE-WEIGHT:.spec.http[0].route[0].weight,CANARY-WEIGHT:.spec.http[0].route[1].weight"
+
+
+oc argo rollouts get rollout rollouts-demo --watch

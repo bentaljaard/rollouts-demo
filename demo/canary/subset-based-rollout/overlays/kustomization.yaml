@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../base
+
+namespace: rollouts-app-staging
+
+patchesJson6902:
+- target:
+    version: v1alpha1
+    group: argoproj.io
+    kind: Rollout
+    name: rollouts-demo
+  path: patch-rollout.yaml
+- target:
+    version: v1alpha3
+    group: networking.istio.io
+    kind: Gateway
+    name: rollouts-demo-gateway
+  path: patch-gateway.yaml
+- target:
+    version: v1alpha3
+    group: networking.istio.io
+    kind: VirtualService
+    name: rollout-vsvc
+  path: patch-virtualservice.yaml
