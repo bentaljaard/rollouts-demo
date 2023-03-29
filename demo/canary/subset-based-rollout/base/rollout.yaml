@@ -9,12 +9,12 @@ spec:
       stableMetadata:
         labels:
           # version: stable
-          service.istio.io/canonical-revision: stable
+          # service.istio.io/canonical-revision: stable
 
       canaryMetadata:
         labels:
           # version: canary
-          service.istio.io/canonical-revision: canary
+          # service.istio.io/canonical-revision: canary
       # analysis:
       #   templates:
       #   # - templateName: error-rate
