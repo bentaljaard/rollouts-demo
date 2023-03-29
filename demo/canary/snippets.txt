@@ -5,6 +5,7 @@ Install following operators:
 * distributed tracing platform
 * kiali
 * service mesh
+* gitOps
 
 
 oc login....
@@ -12,7 +13,9 @@ oc create namespace argo-rollouts
 oc apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
 
 oc apply -f service_mesh_setup/ServiceMeshControlPlane.yaml
-
+oc label namespace argo-rollouts-demo-staging argocd.argoproj.io/managed-by=openshift-gitops
+oc label namespace istio-system argocd.argoproj.io/managed-by=openshift-gitops
+oc label namespace staging-mesh argocd.argoproj.io/managed-by=openshift-gitops
 
 demo application
 -----------------
@@ -40,6 +43,7 @@ browser: rollout-app.apps.cluster-g9w5w.g9w5w.sandbox1118.opentlc.com
 oc get pods -o "custom-columns=POD-NAME:.metadata.name,IMAGE:.spec.containers[0].image,VERSION:.metadata.labels.version"
 
 oc argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:red
+oc patch rollout rollouts-demo --type merge -p '{"spec":{"template":{"metadata":{"labels":{"version":"red"}}}}}'
 
 oc argo rollouts promote rollouts-demo
 

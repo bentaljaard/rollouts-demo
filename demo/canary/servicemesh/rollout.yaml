@@ -7,27 +7,38 @@ spec:
   strategy:
     canary:
       stableMetadata:
-          labels:
-            # version: stable
-            service.istio.io/canonical-revision: stable
+        labels:
+          role: stable
+          # version: stable
+          # service.istio.io/canonical-revision: stable
 
       canaryMetadata:
         labels:
+          role: canary
           # version: canary
-          service.istio.io/canonical-revision: canary
-      canaryService: rollouts-demo-canary
-      stableService: rollouts-demo-stable
+          # service.istio.io/canonical-revision: canary
+      # analysis:
+      #   templates:
+      #   # - templateName: error-rate
+      #   - templateName: http-benchmark
+      #   startingStep: 1
+      #   args:
+      #   # - name: service-name
+      #   #   value: rollouts-demo.sm-rollouts-demo.svc.cluster.local
+      #   - name: host
+      #     value: rollouts-demo.sm-rollouts-demo.svc.cluster.local
       trafficRouting:
         istio:
           virtualServices:
-          - name: rollouts-demo-vsvc1 # At least one virtualService is required
+          - name: rollout-vsvc
             routes:
-            - primary # At least one route is required
-          # - name: rollouts-demo-vsvc2
-          #   routes:
-          #   - secondary # At least one route is required
+            - primary
+          destinationRule:
+            name: rollout-destrule
+            canarySubsetName: canary
+            stableSubsetName: stable
       steps:
-      - setWeight: 5
+      - setWeight: 10
       - pause: {}
   revisionHistoryLimit: 2
   selector:
@@ -37,8 +48,8 @@ spec:
     metadata:
       labels:
         app: rollouts-demo
-        istio-injection: enabled
-        # version: "1.0"
+        # istio-injection: enabled
+        version: blue
       annotations:
         sidecar.istio.io/inject: "true"
     spec:
