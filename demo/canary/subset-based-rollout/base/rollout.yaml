@@ -8,12 +8,12 @@ spec:
     canary:
       stableMetadata:
         labels:
-          version: stable
+          # version: stable
           service.istio.io/canonical-revision: stable
 
       canaryMetadata:
         labels:
-          version: canary
+          # version: canary
           service.istio.io/canonical-revision: canary
       # analysis:
       #   templates:
