@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: demo/canary/subset-based-rollout/overlays/staging
+    path: demo/canary/servicemesh-argocd/overlays/staging
     repoURL: https://github.com/bentaljaard/rollouts-demo.git
     targetRevision: main
   ignoreDifferences:

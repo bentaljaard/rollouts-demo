@@ -6,6 +6,15 @@ spec:
   replicas: 1
   strategy:
     canary:
+      stableMetadata:
+          labels:
+            # version: stable
+            service.istio.io/canonical-revision: stable
+
+      canaryMetadata:
+        labels:
+          # version: canary
+          service.istio.io/canonical-revision: canary
       canaryService: rollouts-demo-canary
       stableService: rollouts-demo-stable
       trafficRouting:
@@ -14,9 +23,9 @@ spec:
           - name: rollouts-demo-vsvc1 # At least one virtualService is required
             routes:
             - primary # At least one route is required
-          - name: rollouts-demo-vsvc2
-            routes:
-            - secondary # At least one route is required
+          # - name: rollouts-demo-vsvc2
+          #   routes:
+          #   - secondary # At least one route is required
       steps:
       - setWeight: 5
       - pause: {}

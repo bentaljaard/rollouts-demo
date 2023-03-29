@@ -1,0 +1,45 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-mesh
+
+---
+apiVersion: maistra.io/v2
+kind: ServiceMeshControlPlane
+metadata:
+  name: dev-mesh
+  namespace: dev-mesh
+spec:
+  tracing:
+    type: Jaeger
+    sampling: 10000
+  gateways:
+    openshiftRoute:
+      enabled: true
+  policy:
+    type: Istiod
+  addons:
+    grafana:
+      enabled: true
+    jaeger:
+      install:
+        storage:
+          type: Memory
+    kiali:
+      enabled: true
+    prometheus:
+      enabled: true
+  telemetry:
+    type: Istiod
+  version: v2.3
+
+---
+apiVersion: maistra.io/v1
+kind: ServiceMeshMemberRoll
+metadata:
+  name: default
+  namespace: dev-mesh
+spec:
+  members:
+    - argo-rollouts-demo-dev

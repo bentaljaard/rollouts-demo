@@ -11,4 +11,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "rollout-app.apps.sno-local.phybernet.org"
+    - "rollout-app-dev.apps.cluster-g9w5w.g9w5w.sandbox1118.opentlc.com"
