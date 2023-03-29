@@ -1,3 +1,6 @@
 - op: replace
   path: /spec/template/spec/containers/0/image
-  value: argoproj/rollouts-demo:blue
+  value: argoproj/rollouts-demo:red
+- op: replace
+  path: /spec/template/metadata/labels/version
+  value: red
