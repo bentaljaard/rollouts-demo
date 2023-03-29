@@ -8,11 +8,13 @@ spec:
     canary:
       stableMetadata:
         labels:
+          role: stable
           # version: stable
           # service.istio.io/canonical-revision: stable
 
       canaryMetadata:
         labels:
+          role: canary
           # version: canary
           # service.istio.io/canonical-revision: canary
       # analysis:
