@@ -17,6 +17,10 @@ spec:
     kind: VirtualService
     jsonPointers:
     - /spec/http/0
+  - group: route.openshift.io/v1
+    kind: Route
+    jsonPointers:
+    - /
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
