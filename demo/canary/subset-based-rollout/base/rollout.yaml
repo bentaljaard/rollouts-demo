@@ -19,7 +19,7 @@ spec:
       #   templates:
       #   # - templateName: error-rate
       #   - templateName: http-benchmark
-      #   startingStep: 2
+      #   startingStep: 1
       #   args:
       #   # - name: service-name
       #   #   value: rollouts-demo.sm-rollouts-demo.svc.cluster.local
@@ -36,8 +36,6 @@ spec:
             canarySubsetName: canary
             stableSubsetName: stable
       steps:
-      - setWeight: 5
-      - pause: {duration: 10s}
       - setWeight: 10
       - pause: {}
   revisionHistoryLimit: 2
