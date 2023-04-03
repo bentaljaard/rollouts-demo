@@ -9,24 +9,11 @@ spec:
       stableMetadata:
         labels:
           role: stable
-          # version: stable
-          # service.istio.io/canonical-revision: stable
 
       canaryMetadata:
         labels:
           role: canary
-          # version: canary
-          # service.istio.io/canonical-revision: canary
-      # analysis:
-      #   templates:
-      #   # - templateName: error-rate
-      #   - templateName: http-benchmark
-      #   startingStep: 1
-      #   args:
-      #   # - name: service-name
-      #   #   value: rollouts-demo.sm-rollouts-demo.svc.cluster.local
-      #   - name: host
-      #     value: rollouts-demo.sm-rollouts-demo.svc.cluster.local
+      
       trafficRouting:
         istio:
           virtualServices:
